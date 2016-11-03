@@ -21,7 +21,7 @@ class RepositoryTableViewController: UITableViewController {
         
         store.getRepositories { error in
             
-            (error == nil) ? self.tableView.reloadData() : print("\(error?.localizedDescription)")
+            (error == nil) ? self.tableView.reloadData() : print(error?.localizedDescription)
             
         }
 
@@ -43,15 +43,10 @@ class RepositoryTableViewController: UITableViewController {
     // MARK: Action
     
     @IBAction func logoutButtonTapped(_ sender: AnyObject) {
-        
-        let error = GitHubAPIClient.deleteAccessToken()
-        
-        if error == nil {
-            NotificationCenter.default.post(name: .closeReposTVC, object: nil)
-        } else {
-            print("\(error?.localizedDescription)")
+//        if GitHubAPIClient.deleteAccessToken != Error {
+//            //dismiss/close table view controller.
         }
 
     }
 
-}
+
